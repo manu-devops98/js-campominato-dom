@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --box-size: 10;
+    --box-size-hard: 9 ;
+    --box-size-crazy: 7;
+}
+
+/* HEADER  */
+header {
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .header-left {
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+
+header img {
+    width: 20%;
+    padding: 1em;
+}
+
+header .header-right {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+}
+
+header .header-right form select {
+    width: 120px;
+    margin: 0 0.5em;
+}
+
+header .header-right button {
+    width: 70px;
+}
+
+/* MAIN  */
+main {
+    height: calc(100vh - 130px);
+    background-color: #7FFFD4;
+    display: flex;
+    overflow: hidden;
+}
+.container {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+.container .box,
+.container .box-red.clicked {
+    /* width: calc(100% / var(--box-size));
+    height: calc(100% / var(--box-size)); */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 0.4em;
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.container .box.clicked {
+    background-color: #6495EC;
+    color: white;
+}
+
+.box-red.clicked {
+    background-color: red;
+    color: white;
+}
+/* FOOTER */
+footer {
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+footer p {
+    padding: 1em;
+}
