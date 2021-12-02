@@ -17,6 +17,7 @@ button.addEventListener('click',
 function () {
 
     container.innerHTML = '';
+    let point = 0;
     if (select.value == 'easy') {
         row = 10;
         col = 10;
@@ -49,28 +50,33 @@ function () {
             square.classList.add('bomb');
         }
         container.append(square); 
-        
+
         square.addEventListener('click', function () {
            if (square.classList.contains('bomb')) {
             const squareRed = document.querySelectorAll('.bomb');
                 for (let x = 0; x < squareRed.length; x++) {
                     squareRed[x].classList.add('clicked');
-                }   
+                } 
+                const resultPoints = `<h2 class = "user-points">HAI PERSO. Totale punti: ${point}</h2>`; 
+                container.innerHTML += resultPoints;
                 container.replaceWith(container.cloneNode(true));
                 if (square.classList.contains('bomb') && square.classList.contains('clicked')) {
                     button.addEventListener('click', function () {
                         location.reload(square);
                     });
                 }
-            } else {
+            } else if (!(square.classList.contains('clicked'))) {
                 square.classList.add('clicked');
-            }          
+                point += 1;
+                if (point == numberBox - bomb) {
+                    const resultPoints = `<h2 class = "user-points">HAI VINTO. Totale punti: ${point}</h2>`; 
+                    container.innerHTML += resultPoints;
+                }
+                console.log(point);
+            } 
         });
     }
 });
-
-// button.addEventListener('click', playGame);
-
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;

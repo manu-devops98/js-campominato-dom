@@ -85,6 +85,10 @@ main {
     background-color: red;
     color: white;
 }
+
+.user-points {
+    margin-top: 20px;
+}
 /* FOOTER */
 footer {
     height: 50px;
