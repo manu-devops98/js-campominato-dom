@@ -13,8 +13,8 @@ const select = document.getElementById('difficulty');
 let row = 0;
 let col = 0;
 
-// button.addEventListener('click',
-function playGame() {
+button.addEventListener('click',
+function () {
 
     container.innerHTML = '';
     if (select.value == 'easy') {
@@ -56,14 +56,20 @@ function playGame() {
                 for (let x = 0; x < squareRed.length; x++) {
                     squareRed[x].classList.add('clicked');
                 }   
-           } else {
-               square.classList.add('clicked');
-           }          
+                container.replaceWith(container.cloneNode(true));
+                if (square.classList.contains('bomb') && square.classList.contains('clicked')) {
+                    button.addEventListener('click', function () {
+                        location.reload(square);
+                    });
+                }
+            } else {
+                square.classList.add('clicked');
+            }          
         });
     }
-}
+});
 
-button.addEventListener('click', playGame);
+// button.addEventListener('click', playGame);
 
 
 function getRndInteger(min, max) {
