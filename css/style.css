@@ -62,8 +62,7 @@ main {
     margin: auto;
 }
 
-.container .box,
-.container .box-red.clicked {
+.container .box {
     /* width: calc(100% / var(--box-size));
     height: calc(100% / var(--box-size)); */
     display: flex;
@@ -82,7 +81,7 @@ main {
     color: white;
 }
 
-.box-red {
+.box.bomb.clicked {
     background-color: red;
     color: white;
 }

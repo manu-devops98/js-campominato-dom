@@ -13,8 +13,8 @@ const select = document.getElementById('difficulty');
 let row = 0;
 let col = 0;
 
-button.addEventListener('click',
-function () {
+// button.addEventListener('click',
+function playGame() {
 
     container.innerHTML = '';
     if (select.value == 'easy') {
@@ -45,21 +45,25 @@ function () {
         square.style.width = `calc(100% / ${col})`;
         square.style.height = `calc(100% / ${row})`;
         square.append(i + 1);
+        if (bomb.includes(i + 1)) {
+            square.classList.add('bomb');
+        }
         container.append(square); 
         
         square.addEventListener('click', function () {
-            if (bomb.includes(i + 1)) {
-                for (let x = 0; x < numberBox; x++) { 
-                    if (bomb.includes(x + 1)) {    
-                        square.classList.add('box-red');
-                    }   
-                }
-            } else {
-                square.classList.add('clicked');
-            }
+           if (square.classList.contains('bomb')) {
+            const squareRed = document.querySelectorAll('.bomb');
+                for (let x = 0; x < squareRed.length; x++) {
+                    squareRed[x].classList.add('clicked');
+                }   
+           } else {
+               square.classList.add('clicked');
+           }          
         });
     }
-});
+}
+
+button.addEventListener('click', playGame);
 
 
 function getRndInteger(min, max) {
