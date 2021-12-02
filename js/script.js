@@ -15,6 +15,7 @@ let col = 0;
 
 button.addEventListener('click',
 function () {
+
     container.innerHTML = '';
     if (select.value == 'easy') {
         row = 10;
@@ -28,6 +29,15 @@ function () {
     }
     
     const numberBox = row * col;
+    let bomb = [];
+
+    while (bomb.length < 16) {
+        let numberRand = getRndInteger(1,numberBox);
+        while (!(bomb.includes(numberRand))) {
+            bomb.push(numberRand);
+        }
+    }
+    console.log(bomb);
 
     for (let i = 0; i < numberBox; i++) {
         const square = document.createElement('div');
@@ -38,8 +48,20 @@ function () {
         container.append(square); 
         
         square.addEventListener('click', function () {
-           square.classList.add('clicked'); 
+            if (bomb.includes(i + 1)) {
+                for (let x = 0; x < numberBox; x++) { 
+                    if (bomb.includes(x + 1)) {    
+                        square.classList.add('box-red');
+                    }   
+                }
+            } else {
+                square.classList.add('clicked');
+            }
         });
     }
 });
 
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
